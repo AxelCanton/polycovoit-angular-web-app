@@ -1,0 +1,11 @@
+<button
+    mat-raised-button
+    [type]="type"
+    [disabled]="disabled || isLoading"
+    color="primary"
+>
+    <div>
+        {{ label }}
+        <ng-container *ngIf="isLoading"><app-spinner size="medium" color="accent"></app-spinner></ng-container>
+    </div>
+</button>
