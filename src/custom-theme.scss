@@ -1,0 +1,121 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define color
+$primary: #029bde;
+$accent: #003a79;
+$warn: #f44336;
+
+$white: #ffffff;
+$black: #000000;
+
+
+$primary-palette: (
+  50: lighten($primary, 60%),
+  100: lighten($primary, 40%),
+  200: lighten($primary, 30%),
+  300: lighten($primary, 20%),
+  400: lighten($primary, 10%),
+  500: $primary,
+  600: darken($primary, 10%),
+  700: darken($primary, 20%),
+  800: darken($primary, 30%),
+  900: darken($primary, 40%),
+  contrast: (
+    50: lighten($white, 60%),
+    100: lighten($white, 40%),
+    200: lighten($white, 30%),
+    300: lighten($white, 20%),
+    400: lighten($white, 10%),
+    500: $white,
+    600: darken($white, 10%),
+    700: darken($white, 20%),
+    800: darken($white, 30%),
+    900: darken($white, 40%),
+  )
+);
+
+$accent-palette: (
+  50: lighten($accent, 60%),
+  100: lighten($accent, 40%),
+  200: lighten($accent, 30%),
+  300: lighten($accent, 20%),
+  400: lighten($accent, 10%),
+  500: $accent,
+  600: darken($accent, 10%),
+  700: darken($accent, 20%),
+  800: darken($accent, 30%),
+  900: darken($accent, 40%),
+  contrast: (
+    50: lighten($white, 60%),
+    100: lighten($white, 40%),
+    200: lighten($white, 30%),
+    300: lighten($white, 20%),
+    400: lighten($white, 10%),
+    500: $white,
+    600: darken($white, 10%),
+    700: darken($white, 20%),
+    800: darken($white, 30%),
+    900: darken($white, 40%),
+  )
+);
+
+$warn-palette: (
+  50: lighten($warn, 60%),
+  100: lighten($warn, 40%),
+  200: lighten($warn, 30%),
+  300: lighten($warn, 20%),
+  400: lighten($warn, 10%),
+  500: $warn,
+  600: darken($warn, 10%),
+  700: darken($warn, 20%),
+  800: darken($warn, 30%),
+  900: darken($warn, 40%),
+  contrast: (
+    50: lighten($white, 60%),
+    100: lighten($white, 40%),
+    200: lighten($white, 30%),
+    300: lighten($white, 20%),
+    400: lighten($white, 10%),
+    500: $white,
+    600: darken($white, 10%),
+    700: darken($white, 20%),
+    800: darken($white, 30%),
+    900: darken($white, 40%),
+  )
+);
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$primary-mat-palette: mat.define-palette($primary-palette);
+$accent-mat-palette: mat.define-palette($accent-palette);
+$warn-mat-palette: mat.define-palette($warn-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$polycovoit-angular-web-app-theme: mat.define-light-theme((
+  color: (
+    primary: $primary-mat-palette,
+    accent: $accent-mat-palette,
+    warn: $warn-mat-palette
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($polycovoit-angular-web-app-theme);
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
