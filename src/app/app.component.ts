@@ -1,10 +1,42 @@
 import { Component } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { AuthService } from 'src/services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.sass'],
+    standalone: true,
+    imports: [
+        RouterOutlet,
+        TopBarComponent,
+        CommonModule
+    ]
 })
 export class AppComponent {
-  title = 'polycovoit-angular-web-app';
+    isLoading = true;;
+
+    constructor(private authService: AuthService, private router: Router) {}
+    
+    ngOnInit() {
+        console.log('init')
+        const observable = this.authService.loginFromLocal();
+        if (observable) {
+            observable.subscribe({
+                next: () => {
+                    this.isLoading = false;
+                    this.router.navigate(['map']);
+                },
+                error: () => {
+                    this.isLoading = false;
+                    this.router.navigate(['login']);
+                }
+            });
+        } else {
+            this.isLoading = false;
+            this.router.navigate(['login']);
+        }
+    }
 }

@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+    <span>Polycovoit</span>
+    <ng-container *ngIf="isConnected">
+        <button mat-button routerLink='/' routerLinkActive="active" >Carte</button>
+        <button mat-button routerLink='/reservations' routerLinkActive="active" >Réservations</button>
+        <button mat-button routerLink='/requests' routerLinkActive="active" >Demandes</button>
+        <button mat-button routerLink='/parameters' routerLinkActive="active" >Paramètres</button>
+    </ng-container>
+</mat-toolbar>
