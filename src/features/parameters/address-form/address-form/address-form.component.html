@@ -1,0 +1,11 @@
+<h2>Ajouter une adresse</h2>
+<label id="example-radio-group-label">Lieu</label>
+<mat-radio-group
+  [(ngModel)]="radioPlace">
+  <mat-radio-button *ngFor="let radioPlace of radioPlaceList" [value]="radioPlace">
+    {{radioPlace}}
+  </mat-radio-button>
+</mat-radio-group>
+<div>
+<app-search-french-city></app-search-french-city>
+</div>

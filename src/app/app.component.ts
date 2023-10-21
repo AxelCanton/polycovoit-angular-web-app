@@ -16,27 +16,26 @@ import { CommonModule } from '@angular/common';
     ]
 })
 export class AppComponent {
-    isLoading = true;;
+    isLoading = false;
 
     constructor(private authService: AuthService, private router: Router) {}
     
     ngOnInit() {
-        console.log('init')
-        const observable = this.authService.loginFromLocal();
-        if (observable) {
-            observable.subscribe({
-                next: () => {
-                    this.isLoading = false;
-                    this.router.navigate(['map']);
-                },
-                error: () => {
-                    this.isLoading = false;
-                    this.router.navigate(['login']);
-                }
-            });
-        } else {
-            this.isLoading = false;
-            this.router.navigate(['login']);
-        }
+        // const observable = this.authService.loginFromLocal();
+        // if (observable) {
+        //     observable.subscribe({
+        //         next: () => {
+        //             this.isLoading = false;
+        //             this.router.navigate(['map']);
+        //         },
+        //         error: () => {
+        //             this.isLoading = false;
+        //             this.router.navigate(['login']);
+        //         }
+        //     });
+        // } else {
+        //     this.isLoading = false;
+        //     this.router.navigate(['login']);
+        // }
     }
 }

@@ -1,0 +1,18 @@
+<mat-form-field>
+  <mat-label>Ville</mat-label>
+  <input type="text"
+           placeholder="Pick one"
+           aria-label="Number"
+           matInput
+           [formControl]="myControl"
+           [matAutocomplete]="auto"
+           ((input))="log($event)"
+           >
+  <mat-autocomplete [displayWith]="formatOption" (optionSelected)="onSelect($event)" #auto="matAutocomplete">
+    <cdk-virtual-scroll-viewport itemSize="50" class="viewport" minBufferPx="200" maxBufferPx="400">
+      <mat-option class="item" *cdkVirtualFor="let option of filteredOptions" [value]="option">
+        {{formatOption(option)}}
+      </mat-option>
+    </cdk-virtual-scroll-viewport>
+  </mat-autocomplete>
+</mat-form-field>
